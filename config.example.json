@@ -1,0 +1,27 @@
+{
+  "seed": 42,
+  "compact_root": "/path/to/compact",
+  "index_root": "/path/to/indices",
+  "output_dir": "/path/to/output",
+  "expected_anchor_counts": {
+    "train": 9753,
+    "val": 2733,
+    "test": 2088
+  },
+  "class_weights": [
+    0.4810590445995331,
+    0.41664502024650574,
+    1.9518030881881714,
+    1.2723472118377686,
+    0.8781456351280212
+  ],
+  "dropout": 0.1,
+  "learning_rate": 0.0005,
+  "minimum_learning_rate": 0.000001,
+  "weight_decay": 0.0001,
+  "epochs": 80,
+  "early_stopping_patience": 12,
+  "gradient_clip_norm": 1.0,
+  "train_chunk_size": 2601,
+  "eval_chunk_size": 2601
+}

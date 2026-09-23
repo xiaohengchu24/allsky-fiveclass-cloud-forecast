@@ -1,0 +1,54 @@
+{
+  "contract_version": "paper-method-2026-09-22",
+  "monitoring": {
+    "architecture": "resnet50",
+    "checkpoint_sha256": "54604ca87382755bc163164b2077475b24b5d2c8eb7348cf3e30ba31a80d20ce",
+    "source_image_shape": [2822, 4144, 3],
+    "patch_shape_pixels": [56, 56],
+    "full_classification_grid": [51, 74],
+    "prediction_roi": {
+      "row_start": 0,
+      "row_end": 51,
+      "col_start": 12,
+      "col_end": 63
+    },
+    "stored_matrix_shape": [51, 51]
+  },
+  "classes": [
+    "Cloudy",
+    "Obstructed",
+    "Partial visibility",
+    "Bright-area interference",
+    "Visible"
+  ],
+  "sample_construction": {
+    "input_offsets_minutes": [-20, -17, -14, -11, -8, -6, -4, -2, -1],
+    "spatial_window_shape": [18, 18],
+    "spatial_offsets": {
+      "row": [-9, 8],
+      "column": [-9, 8],
+      "bounds_are_inclusive": true
+    },
+    "out_of_domain_padding_class_index": 1,
+    "out_of_domain_padding_class_name": "Obstructed",
+    "encoding": "five-channel one-hot",
+    "temporal_mosaic_layout": "3x3 row-major in input-offset order",
+    "model_input_shape": [5, 54, 54],
+    "target_positions_per_anchor": 2601,
+    "spatial_sampling": "none"
+  },
+  "prediction": {
+    "architecture": "shared ResNet50 backbone with four independent linear heads",
+    "initialization": "random; monitoring-classifier weights are not reused",
+    "forecast_horizons_minutes": [1, 5, 10, 15],
+    "classes_per_head": 5,
+    "per_target_logits_shape": [4, 5],
+    "assembled_logits_shape": [4, 5, 51, 51]
+  },
+  "splits": {
+    "train": {"months": [5, 6, 11], "anchors": 9753, "time_bin_minutes": 10},
+    "validation": {"months": [5, 6, 11], "anchors": 2733, "time_bin_minutes": 10},
+    "test": {"months": [4, 10, 12], "anchors": 2088, "time_bin_minutes": 60},
+    "test_anchors_by_month": {"4": 601, "10": 744, "12": 743}
+  }
+}
