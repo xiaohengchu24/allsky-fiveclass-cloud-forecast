@@ -1,0 +1,11 @@
+                     precision    recall  f1-score   support
+
+             Cloudy     0.9337    0.9717    0.9523      6046
+         Obstructed     0.9921    0.9947    0.9934     18100
+ Partial visibility     0.7268    0.6661    0.6951      1150
+unknown bright area     0.9354    0.8771    0.9053       594
+            Visible     0.9721    0.9469    0.9594      6219
+
+           accuracy                         0.9672     32109
+          macro avg     0.9120    0.8913    0.9011     32109
+       weighted avg     0.9667    0.9672    0.9667     32109

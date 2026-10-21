@@ -1,0 +1,18 @@
+{
+  "total_samples": 358434,
+  "splits": {
+    "train": 222441,
+    "validation": 76544,
+    "test": 59449
+  },
+  "class_counts": {
+    "Cloudy": 125840,
+    "Obstructed": 121751,
+    "Partial visibility": 15265,
+    "Bright-area interference": 15041,
+    "Visible": 80537
+  },
+  "split_policy": "The packaged fixed_split_manifest.csv is authoritative. All runs use its train, validation, and test assignments without re-splitting.",
+  "image_shape_pixels": [56, 56],
+  "seed": 42
+}

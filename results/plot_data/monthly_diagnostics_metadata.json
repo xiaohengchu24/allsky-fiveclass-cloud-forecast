@@ -1,0 +1,20 @@
+{
+  "source": "finalan_v20261005_1 packaged predictions, targets, persistence predictions, metadata, and valid-sky mask",
+  "valid_sky_positions": 1384,
+  "test_anchors": 2818,
+  "horizons_minutes": [
+    5,
+    10,
+    20,
+    30
+  ],
+  "classes": [
+    "Cloudy",
+    "Obstructed",
+    "Partial visibility",
+    "Bright-area interference",
+    "Visible"
+  ],
+  "state_change_rate_definition": "percentage of target positions where persistence prediction differs from the future target",
+  "macro_f1_definition": "unweighted mean of the five one-vs-rest class F1 scores"
+}

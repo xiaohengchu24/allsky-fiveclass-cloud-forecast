@@ -1,0 +1,19 @@
+{
+  "camera_period": "2020",
+  "field_of_view_deg": 180,
+  "full_image_size_pixels": [
+    2328,
+    1760
+  ],
+  "test_patches": 32109,
+  "accuracy": 0.9672,
+  "macro_f1": 0.9011,
+  "per_class_f1": {
+    "Cloudy": 0.9523,
+    "Obstructed": 0.9934,
+    "Partial visibility": 0.6951,
+    "Bright-area interference": 0.9053,
+    "Visible": 0.9594
+  },
+  "provenance": "Values reported in the accompanying manuscript for the independent 2020-camera test split."
+}

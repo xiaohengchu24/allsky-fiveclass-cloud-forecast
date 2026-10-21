@@ -1,0 +1,28 @@
+{
+  "camera_period": "2020",
+  "field_of_view_deg": 180,
+  "full_image_size_pixels": [
+    2328,
+    1760
+  ],
+  "patch_size_pixels": [
+    56,
+    56
+  ],
+  "split_unit": "full-image group",
+  "split_ratios": {
+    "train": 0.70,
+    "validation": 0.15,
+    "test": 0.15
+  },
+  "label_library_total": 216015,
+  "class_distribution": {
+    "Cloudy": 39874,
+    "Obstructed": 121885,
+    "Partial visibility": 8672,
+    "Bright-area interference": 4557,
+    "Visible": 41027
+  },
+  "test_patches": 32109,
+  "provenance": "Values reported in the accompanying manuscript. The trained checkpoint is released as checkpoints/classification_resnet50_2020.pt; the raw images and original fixed split manifest are not redistributed."
+}

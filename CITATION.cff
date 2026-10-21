@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying manuscript."
+title: "Regional Cloud Monitoring and Cloud Distribution Forecasting from All-Sky Camera Images"
+type: software
+version: 1.0.0
+date-released: 2026-10-16
+authors:
+  - family-names: Xiao
+    given-names: Hengchu
+  - family-names: Wang
+    given-names: Chuanjun
+  - family-names: Ding
+    given-names: Xu
+  - family-names: Yi
+    given-names: Weimin
+  - family-names: Xin
+    given-names: Yu-Xin
+  - family-names: He
+    given-names: Shou-Sheng
+  - family-names: Wang
+    given-names: Zhenzhen
+  - family-names: Wang
+    given-names: Chunping
+  - family-names: Wang
+    given-names: De-Qing

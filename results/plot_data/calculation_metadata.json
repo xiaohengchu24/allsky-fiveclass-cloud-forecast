@@ -1,0 +1,24 @@
+{
+  "bootstrap_unit": "calendar day within each test month",
+  "bootstrap_repeats": 1000,
+  "confidence_interval": "2.5th and 97.5th percentiles",
+  "seed": 20261005,
+  "horizons_minutes": [
+    5,
+    10,
+    20,
+    30
+  ],
+  "months": [
+    4,
+    7,
+    10,
+    12
+  ],
+  "anchor_counts": {
+    "4": 594,
+    "7": 741,
+    "10": 743,
+    "12": 740
+  }
+}
