@@ -63,6 +63,21 @@ def main() -> None:
         check(abs(float(row["persistence_accuracy"]) - baseline) < 1e-12, "persistence accuracy")
         check(abs(float(row["relative_error_reduction"]) - rer) < 1e-12, "relative error reduction")
 
+    runtime = json.loads(
+        (ROOT / "results/runtime/local_hardware_runtime.json").read_text(encoding="utf-8")
+    )
+    check(runtime["benchmark_date"] == "2026-10-22", "runtime benchmark date")
+    check(
+        runtime["raspberry_pi_4b"]["valid_sky_1384_patch_classification"]
+        ["median_seconds"]["monitoring_and_forecasting"] == 131.2181,
+        "Raspberry Pi valid-sky runtime",
+    )
+    check(
+        runtime["raspberry_pi_4b"]["output_verification"]
+        ["forecast_agreement_with_local_pytorch"] == 1.0,
+        "Raspberry Pi forecast-output agreement",
+    )
+
     checksum_path = ROOT / "SHA256SUMS.txt"
     if checksum_path.exists():
         for line in checksum_path.read_text(encoding="utf-8").splitlines():

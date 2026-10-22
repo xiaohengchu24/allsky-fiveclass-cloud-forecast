@@ -5,3 +5,4 @@ __pycache__/
 outputs/
 data/forecast_compact/
 *.zip
+benchmarks/runtime/onnx/

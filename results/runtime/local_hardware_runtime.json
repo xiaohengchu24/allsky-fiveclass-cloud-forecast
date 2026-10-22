@@ -1,0 +1,79 @@
+{
+  "benchmark_date": "2026-10-22",
+  "benchmark_type": "Independent deployment-oriented runtime test, separate from model-accuracy evaluation.",
+  "execution_scope": "All measurements were performed on local hardware; no cloud server was used.",
+  "workloads": {
+    "classification_full": "One 4144x2822 all-sky image divided into a 51x74 grid (3774 patches of 56x56 pixels).",
+    "classification_valid_sky": "The same image, restricted to 1384 positions in the fixed 51x51 valid-sky mask.",
+    "forecast": "Twenty-five historical 51x51 state matrices, 1384 valid target positions, and four forecast horizons (5, 10, 20, and 30 min)."
+  },
+  "desktop": {
+    "hardware": {
+      "cpu": "Intel Core i5-12400F",
+      "gpu": "NVIDIA GeForce RTX 4060 8 GB"
+    },
+    "software": "PyTorch 2.5.1",
+    "measurement_note": "Representative execution time after model loading.",
+    "cpu_only_seconds": {
+      "image_preprocessing": 0.4264,
+      "classification_inference": 7.9533,
+      "complete_monitoring": 8.3797,
+      "forecast_tensor_construction": 0.3066,
+      "forecast_inference": 2.8039,
+      "complete_forecasting": 3.1104,
+      "monitoring_and_forecasting": 11.4901
+    },
+    "gpu_accelerated_seconds": {
+      "image_preprocessing": 0.4716,
+      "classification_inference": 0.2868,
+      "complete_monitoring": 0.7584,
+      "forecast_tensor_construction": 0.0557,
+      "forecast_inference": 0.1436,
+      "complete_forecasting": 0.1993,
+      "monitoring_and_forecasting": 0.9577
+    }
+  },
+  "raspberry_pi_4b": {
+    "hardware": {
+      "cpu": "4-core Arm Cortex-A72 at 1.5 GHz",
+      "memory_gib": 3.7
+    },
+    "software": "OpenCV DNN 4.10.0, ONNX models exported from the released PyTorch checkpoints",
+    "threads": 4,
+    "repeats": 3,
+    "full_3774_patch_classification": {
+      "complete_monitoring_runs_seconds": [195.3150, 188.4701, 188.0857],
+      "complete_forecasting_runs_seconds": [58.4009, 57.7895, 58.7769],
+      "combined_runs_seconds": [253.7160, 246.2596, 246.8626],
+      "median_seconds": {
+        "complete_monitoring": 188.4701,
+        "complete_forecasting": 58.4009,
+        "monitoring_and_forecasting": 246.8626
+      },
+      "peak_rss_mib": 1023.4
+    },
+    "valid_sky_1384_patch_classification": {
+      "complete_monitoring_runs_seconds": [70.7145, 73.2559, 71.5272],
+      "complete_forecasting_runs_seconds": [58.5889, 59.1580, 59.6908],
+      "combined_runs_seconds": [129.3034, 132.4139, 131.2181],
+      "median_seconds": {
+        "complete_monitoring": 71.5272,
+        "complete_forecasting": 59.1580,
+        "monitoring_and_forecasting": 131.2181
+      },
+      "peak_rss_mib": 780.7
+    },
+    "valid_sky_reduction": {
+      "classification_time_percent": 62.05,
+      "combined_time_percent": 46.85,
+      "classification_speedup": 2.63,
+      "combined_speedup": 1.88
+    },
+    "output_verification": {
+      "forecast_agreement_with_local_pytorch": 1.0,
+      "classification_agreement_full_grid_with_local_pytorch": 0.9941706412294647,
+      "classification_agreement_valid_sky_with_local_pytorch": 0.9841040462427746,
+      "note": "Small classification differences arise from the OpenCV DNN and PyTorch numerical implementations; forecast labels matched exactly."
+    }
+  }
+}

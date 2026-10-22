@@ -13,6 +13,7 @@ This repository contains the code, fixed data splits, trained models, and numeri
   reported dataset summary for the independent 2020 camera experiment.
 - `data/forecast_indices/`: fixed training, validation, and test anchors and the valid-sky mask.
 - `results/`: classification, forecast, persistence-baseline, and plotting results.
+- `benchmarks/runtime/`: scripts and instructions for local desktop and Raspberry Pi runtime measurements.
 - `checkpoints/`: the independently trained 2020- and post-2024-camera
   classification checkpoints and the final forecasting checkpoint used for the
   reported results.
@@ -26,6 +27,28 @@ The regional classification accuracies are 96.72% for the 2020 camera dataset an
 The forecast training months are May, June, August, and November. The independent test months are April, July, October, and December. Forecast evaluation uses 2,818 anchors and 1,384 valid sky positions. Confidence intervals in the released monthly tables use 1,000 calendar-day block-bootstrap resamples.
 
 The internal classification label `unknown bright area` corresponds to “Bright-area interference” in the manuscript.
+
+## Independent local runtime benchmark
+
+This deployment-oriented benchmark is separate from the model-accuracy evaluation.
+Runtime measurements were performed locally, without a cloud server. On a desktop
+computer, complete monitoring and forecasting required 11.490 s using an Intel
+i5-12400F CPU and 0.958 s using an NVIDIA RTX 4060 GPU. On a Raspberry Pi 4 Model B,
+restricting classification to the 1,384 valid-sky regions reduced the median combined
+runtime from 246.863 s to 131.218 s. Detailed stage timings, repeated Raspberry Pi
+measurements, hardware information, and the benchmark protocol are provided in
+`results/runtime/local_hardware_runtime.json` and `benchmarks/runtime/README.md`.
+
+| Execution device and classification scope | Classification positions | Monitoring (s) | Forecasting (s) | Combined (s) |
+| --- | ---: | ---: | ---: | ---: |
+| Intel i5-12400F CPU, full image | 3,774 | 8.380 | 3.110 | 11.490 |
+| NVIDIA RTX 4060 8 GB, full image | 3,774 | 0.758 | 0.199 | 0.958 |
+| Raspberry Pi 4B CPU, full image | 3,774 | 188.470 | 58.401 | 246.863 |
+| Raspberry Pi 4B CPU, valid sky only | 1,384 | 71.527 | 59.158 | 131.218 |
+
+Desktop values are representative measurements after model loading. Raspberry Pi
+values are medians of three runs. Forecasting always covers the same 1,384 valid-sky
+positions; its small run-to-run variation does not reflect a change in workload.
 
 ### Camera-specific classification artifacts
 
